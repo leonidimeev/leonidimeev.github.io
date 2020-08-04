@@ -1,0 +1,20 @@
+// Диаграмма последовательностей для объекта User Editing
+// написана на sequencediagram.org
+title Editing(AllUsers)
+
+database СУБД
+participant ToDo.UserEditing
+actor Пользователь
+
+activate ToDo.UserEditing
+ToDo.UserEditing->Пользователь:Отображает форму редактирования (пустую, имя, новый пароль)
+Пользователь->ToDo.UserEditing:Заполняет форму, нажимает ОК
+ToDo.UserEditing->Пользователь:Запрос текущего пароля
+Пользователь->ToDo.UserEditing:Заполняет форму, нажимает ОК
+ToDo.UserEditing->СУБД:Запрашивает данные пользователя (Person)
+СУБД->ToDo.UserEditing: Объект Person
+box over ToDo.UserEditing: Функция проверки пароля
+box over ToDo.UserEditing:Функция изменения пользователя
+ToDo.UserEditing->СУБД: Функция изменения данных СУБД
+Пользователь->ToDo.UserEditing:Нажимает кнопку "Закрыть"
+deactivate ToDo.UserEditing

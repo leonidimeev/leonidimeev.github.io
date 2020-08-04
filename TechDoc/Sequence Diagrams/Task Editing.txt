@@ -1,0 +1,17 @@
+// Диаграмма последовательностей для объекта Task Editing
+// написана на sequencediagram.org
+title TaskEditing
+
+database СУБД
+participant ToDo.TaskEditing
+actor Пользователь
+
+Пользователь->ToDo.TaskEditing:Нажимает кнопку изменить
+activate ToDo.TaskEditing
+ToDo.TaskEditing->Пользователь:Отображает форму редактирования
+Пользователь->ToDo.TaskEditing:Заполняет форму, нажимает ОК
+ToDo.TaskEditing->СУБД:Запрашивает данные задания (Task)
+СУБД->ToDo.TaskEditing: Объект Task
+box over ToDo.TaskEditing:Функция изменения задания
+ToDo.TaskEditing->СУБД: Функция изменения данных СУБД
+deactivate ToDo.TaskEditing

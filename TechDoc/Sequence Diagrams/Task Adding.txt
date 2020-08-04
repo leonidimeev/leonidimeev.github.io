@@ -1,0 +1,15 @@
+// Диаграмма последовательностей для объекта Task Adding
+// написана на sequencediagram.org
+title TaskAdding
+
+database СУБД
+participant ToDo.TaskAdding
+actor Пользователь
+
+Пользователь->ToDo.TaskAdding:Нажимает кнопку создать
+activate ToDo.TaskAdding
+ToDo.TaskAdding->Пользователь:Отображает форму редактирования
+Пользователь->ToDo.TaskAdding:Заполняет форму, нажимает ОК
+box over ToDo.TaskAdding:Функция добавления задания
+ToDo.TaskAdding->СУБД: Функция изменения данных СУБД
+deactivate ToDo.TaskAdding
